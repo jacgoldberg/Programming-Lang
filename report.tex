@@ -174,7 +174,52 @@ I have added my program into this github repo. It is a simple python program tha
 I ran it with python 3 and manually input 9 and 33 yeilding the answer 3.
 
 \subsection{Week 2}
-
+This week we were tasked with creating simple recursive programs in huskall. These are my solutions for all of the assigned functions. These functions can also be found in a huskell
+file titled "Main.hs".
+\begin{lstlisting}
+  -- Takes a list of char and returns a list of char. This works by assinging the element at odd positional values of a list into an empty list using the zip function which is what it returns.
+  select_evens :: [[a]] -> [[a]]
+  select_evens xs = [x | (x,i) <- zip xs [0..], odd i]
+\end{lstlisting}
+I referenced \href{https://stackoverflow.com/questions/49741305/how-to-pick-elements-in-even-index-and-odd-index}{this}.
+\begin{lstlisting}
+  -- Same logic as above just assignes based on even possition.
+  select_odds :: [[a]] -> [[a]]
+  select_odds xs = [x | (x,i) <- zip xs [0..], even i]
+\end{lstlisting}
+\begin{lstlisting}
+  -- Uses the filter to function to create a list of all matching elements to the ones provided.
+     If the length is greater then 0 the its a member.
+  member :: Int -> [Int] -> IO Bool
+  member x li= do
+    let xs = filter(== x) li
+    if length xs == 0
+        then 
+            return (False)
+        else do
+            return(True)
+\end{lstlisting}
+\begin{lstlisting}
+  -- Uses ++ to concatinate lists.
+  append :: [Int] -> [Int] -> [Int]
+  append l1 l2 = l1 ++ l2 
+\end{lstlisting}
+\begin{lstlisting}
+  -- Recursively assigns element to back of new list, creating a reverse list.
+  revert :: [Int] -> [Int]
+  revert [] = []
+  revert (x:xs) = revert xs ++ [x]
+\end{lstlisting}
+\begin{lstlisting}
+  -- Compares two strings using <=.
+  less_equal :: [Int] -> [Int] -> IO Bool
+  less_equal l1 l2 = do
+      if last l1 <= last l2
+          then 
+              return (True)
+          else do
+               return (False)
+\end{lstlisting}
 \ldots
 
 \section{Project}
