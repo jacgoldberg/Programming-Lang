@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.8.28) (preloaded format=pdflatex 2022.9.11)  11 SEP 2022 23:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.8.28) (preloaded format=pdflatex 2022.9.11)  18 SEP 2022 19:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -393,13 +393,13 @@ ate -> [Char] -> State
 
 [2] [3] [4] [5] (report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 502A9DC5C07165445A2BAD2A2F17187D;2290.
+(rerunfilecheck)             Checksum: D5D162A76D34AFBD2504E794BC1E32DE;2381.
  ) 
 Here is how much of TeX's memory you used:
- 11481 strings out of 477843
- 173998 string characters out of 2823599
- 716763 words of memory out of 3000000
- 30197 multiletter control sequences out of 15000+600000
+ 11483 strings out of 477843
+ 174028 string characters out of 2823599
+ 717763 words of memory out of 3000000
+ 30198 multiletter control sequences out of 15000+600000
  478913 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,8n,77p,404b,1986s stack positions out of 10000i,1000n,20000p,200000b,80000s
@@ -421,9 +421,9 @@ c/amsfonts/cm/cmti10.pfb><C:/Users/goldb/AppData/Local/Programs/MiKTeX/fonts/ty
 pe1/public/amsfonts/cm/cmtt10.pfb><C:/Users/goldb/AppData/Local/Programs/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Users/goldb/AppData/Local/Program
 s/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on report.pdf (5 pages, 224976 bytes).
+Output written on report.pdf (5 pages, 226353 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
