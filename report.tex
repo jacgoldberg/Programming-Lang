@@ -1,0 +1,204 @@
+\documentclass{article}
+
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fullpage}
+\usepackage[usenames]{color}
+\usepackage{hyperref}
+  \hypersetup{
+    colorlinks = true,
+    urlcolor = blue,       % color of external links using \href
+    linkcolor= blue,       % color of internal links 
+    citecolor= blue,       % color of links to bibliography
+    filecolor= blue,        % color of file links
+    }
+    
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=haskell,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\theoremstyle{theorem} 
+   \newtheorem{theorem}{Theorem}[section]
+   \newtheorem{corollary}[theorem]{Corollary}
+   \newtheorem{lemma}[theorem]{Lemma}
+   \newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+   \newtheorem{definition}[theorem]{Definition}
+   \newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}    
+  \newtheorem{remark}[theorem]{Remark}
+
+
+\title{CPSC-354 Report}
+\author{Jackson Goldberg  \\ Chapman University}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+My Report.  
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}\label{intro}
+Hi there. My name is Jackson Goldberg. I am a senior here at chapman University and I am taking programming languages. I like playing chess. Enjoy reading my report.
+
+\section{Homework}\label{homework}
+
+\subsection{Week 1}
+
+I have added my program into this github repo. It is a simple python program that loops infinatly until a and b are equal.
+I ran it with python 3 and manually input 9 and 33 yeilding the answer 3.
+
+\subsection{Week 2}
+This week we were tasked with creating simple recursive programs in huskall. These are my solutions for all of the assigned functions. These functions can also be found in a huskell
+file titled "Main.hs".
+\begin{lstlisting}
+  -- Takes a list of char and returns a list of char. This works by assinging the element at odd positional values of a list into an empty list using the zip function which is what it returns.
+  select_evens :: [[a]] -> [[a]]
+  select_evens xs = [x | (x,i) <- zip xs [0..], odd i]
+
+  -- Example:
+  select_evens ["a","b","c","d","e"] =
+              [] : (select_evens["b","c","d","e]) = 
+           ["b"] : (select_evens ["c","d","e"]) = 
+           ["b"] : (select_evens ["d","e"]) = 
+           ["b","d"] : (select_evens ["e"])
+           ["b","d"] : (select_evens []) =
+           ["b","d"]
+
+\end{lstlisting}
+I referenced \href{https://stackoverflow.com/questions/49741305/how-to-pick-elements-in-even-index-and-odd-index}{this}.
+\begin{lstlisting}
+  -- Same logic as above just assignes based on even possition.
+  select_odds :: [[a]] -> [[a]]
+  select_odds xs = [x | (x,i) <- zip xs [0..], even i]
+
+  -- Example:
+  select_odds ["a","b","c","d","e"] = 
+           ["a"] : (select_odds["b","c","d","e]) = 
+           ["a"] : (select_odds ["c","d","e"]) = 
+       ["a","c"] : (select_odds ["d","e"]) = 
+       ["a","c"] : (select_odds ["e"])
+  ["a","c", "e"] : (select_odds []) =
+  ["a","c", "e"]
+\end{lstlisting}
+\begin{lstlisting}
+  -- Uses the filter to function to create a list of all matching elements to the ones provided.
+     If the length is greater then 0 the its a member.
+  member :: Int -> [Int] -> IO Bool
+  member x li= do
+    let xs = filter(== x) li
+    if length xs == 0
+        then 
+            return (False)
+        else do
+            return(True)
+    
+  -- Example: 
+  member 2 [5,2,6] =
+  1 = filter(== 2) li
+  if length xs == 0
+        else do
+          return(True)
+  True
+\end{lstlisting}
+\begin{lstlisting}
+  -- Uses ++ to concatinate lists.
+  append :: [Int] -> [Int] -> [Int]
+  append l1 l2 = l1 ++ l2 
+
+  --Example:
+  append [1,2] [3,4,5] = 
+    [1,2] ++ [3,4,5] =
+  [1,2,3,4,5]
+\end{lstlisting}
+\begin{lstlisting}
+  -- Recursively assigns element to back of new list, creating a reverse list.
+  revert :: [Int] -> [Int]
+  revert [] = []
+  revert (x:xs) = revert xs ++ [x]
+
+  --Example:
+  revert [1,2,3] = 
+     [3]: revert[1,2] =
+   [3,2]: revert[1] =
+   [3,2,1]
+\end{lstlisting}
+\begin{lstlisting}
+  -- Compares two strings using <=.
+  less_equal :: [Int] -> [Int] -> IO Bool
+  less_equal l1 l2 = do
+      if last l1 <= last l2
+          then 
+              return (True)
+          else do
+               return (False)
+  --Example:
+  less_equal [1,2,3] [2,3,2] = 
+  3 > 2
+  False
+\end{lstlisting}
+\subsection{Week 3}
+
+This week we were tasked with finishing the hanoi file supplied to us. The full file can be found 
+in Hanoi.txt.
+Hanoi is used 31 times in the file. 
+You can express this as formula because it doesn't matter the starting blocks since the process will always be the exact same.
+you will always need to reduce to the highest block so the number is nonconsiquental. There are many cool visuals of this online which show what is looks like using a graphical interpritation. There is a simple break down for however many N you have. 
+
+\subsection{Week 4}
+This week we worked with context free grammers and parse trees. Part one can be found \href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022.pdf}{here}, part 2 can be found 
+\href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022%20(2).pdf} {here}. 
+
+\ldots
+
+\section{Project}
+
+Introductory remarks ...
+
+The following structure should be suitable for most practical projects. 
+
+\subsection{Specification}
+\subsection{Prototype}
+\subsection{Documentation}
+\subsection{Critical Appraisal}
+
+\ldots
+
+\section{Conclusions}\label{conclusions}
+
+(approx 400 words)
+
+In the conclusion, I want a critical reflection on the content of the course. Step back from the technical details. How does the course fit into the wider world of programming languages and software engineering?
+
+\begin{thebibliography}{99}
+\bibitem[PL]{PL} \href{https://github.com/alexhkurz/programming-languages-2022/blob/main/README.md}{Programming Languages 2022}, Chapman University, 2022.
+\end{thebibliography}
+
+\end{document}
