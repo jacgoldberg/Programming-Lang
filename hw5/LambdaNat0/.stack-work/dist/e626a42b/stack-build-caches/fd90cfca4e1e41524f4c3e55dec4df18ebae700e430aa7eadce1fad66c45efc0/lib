@@ -1,0 +1,28 @@
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\LambdaNat.cabal:
+  hash: 3ae9451e2f12bb4e81be9280cb71cd1575ef8fe54392a5677167eb5eb1877e0f
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\src\LexLambdaNat.hs:
+  hash: 00003098224dcc56626322bc8127f50d6155c2d56dff61058ef077ba6ce1015a
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\src\ErrM.hs:
+  hash: 23910ef40040aac02c23a6e08fb2f3b29623559731d5a7d18b81736235e90a5e
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\src\Interpreter.hs:
+  hash: 042aabc539f05534a8c363f79c51e52d8db1185f4e21959c95350051864eb7c2
+? C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\.stack-work\dist\e626a42b\build\autogen\cabal_macros.h
+: hash: 56b30df882f92a6263d0911e8ce3f91988481aff035dc4984c9605cef5682974
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\src\AbsLambdaNat.hs:
+  hash: 449958313e4ac095783e8b6379b51c738f3baf6fcfbcff6d790e6961ff6a402c
+C:\Users\goldb\AppData\Local\Programs\stack\x86_64-windows\ghc-8.6.4\lib\include\ghcplatform.h:
+  hash: 8bfcb631ee0abc3274c016365f110d88e87b3f2357dca939802f93a09e9dd074
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\src\ParLambdaNat.hs:
+  hash: eb298a8a152acdf606ac2c77ef165b8f07c0cafc4bad7ef6cd4a9c03b6364ffa
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\src\PrintLambdaNat.hs:
+  hash: e2587251dac0ec554e4d0ce9af3fd1c1e7000729f05ee67cfb119a8cd73aff7d
+C:\Users\goldb\AppData\Local\Programs\stack\x86_64-windows\ghc-8.6.4\lib\include\ghcautoconf.h:
+  hash: 908f1574b45ffbf6a1c8139563221444c09e3da5149ff62b3cd6163178fa9bd4
+C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\package.yaml:
+  hash: 66638be90c4b343b919207db4bdebe2152ef191050298b270eaa765abcf85db1
+? C:\Users\goldb\Documents\CPSC_Courses\CPSC_354\Programming-Lang\hw5\LambdaNat0\.stack-work\dist\e626a42b\build\autogen\Paths_LambdaNat.hs
+: hash: e815a50c46cad616351d82a547f08fc849ced5233f85ab20cbaf13504c654c92
+C:\Users\goldb\AppData\Local\Programs\stack\x86_64-windows\ghc-8.6.4\lib\include\ghcversion.h:
+  hash: 529291d4a255ef1c3ec99116d8dca391f2db7bad8b5eab6dcbf9a70354c6eedf
+C:\Users\goldb\AppData\Local\Programs\stack\x86_64-windows\ghc-8.6.4\lib\include\ghcconfig.h:
+  hash: 03f4611ae97decc9e8c76c212bf7886d003b29d5c62b43fee6623a799f6e5fdf

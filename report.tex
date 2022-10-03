@@ -176,7 +176,185 @@ you will always need to reduce to the highest block so the number is nonconsique
 This week we worked with context free grammers and parse trees. Part one can be found \href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022.pdf}{here}, part 2 can be found 
 \href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022%20(2).pdf} {here}. 
 
-\ldots
+\subsection{Week 5}
+This week we are doing a lot of lambda calc stuff with abstract syntax trees.
+
+Using the parser to generate linearized abstract syntax trees:
+\begin{lstlisting}
+  Input:
+\ x . x a
+
+[Abstract Syntax]
+
+Prog (EApp (EAbs (Id "x") (EVar (Id "x"))) (EVar (Id "a")))
+
+ Output:
+a 
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . x a
+  
+  [Abstract Syntax]
+  
+  Prog (EAbs (Id "x") (EApp (EVar (Id "x")) (EVar (Id "a"))))
+  
+   Output:
+  \ x . x a
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . x a b
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "x")))) (EVar (Id "a"))) (EVar (Id "b")))
+  
+   Output:
+  a
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . y a b
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "y")))) (EVar (Id "a"))) (EVar (Id "b")))
+  
+   Output:
+  b
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . x a b c
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "x")))) (EVar (Id "a"))) (EVar (Id "b"))) (EVar (Id "c")))
+  
+   Output:
+  a c
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . y a b c
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "y")))) (EVar (Id "a"))) (EVar (Id "b"))) (EVar (Id "c")))
+  
+   Output:
+  b c
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . x a (b c)
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "x")))) (EVar (Id "a"))) (EApp (EVar (Id "b")) (EVar (Id "c"))))
+  
+   Output:
+  a
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . y a (b c)
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "y")))) (EVar (Id "a"))) (EApp (EVar (Id "b")) (EVar (Id "c"))))
+  
+   Output:
+  b c
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . x (a b) c
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "x")))) (EApp (EVar (Id "a")) (EVar (Id "b")))) (EVar (Id "c")))
+  
+   Output:
+  a b
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . y (a b) c
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "y")))) (EApp (EVar (Id "a")) (EVar (Id "b")))) (EVar (Id "c")))
+  
+   Output:
+  c
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . x (a b c)
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "x")))) (EApp (EApp (EVar (Id "a")) (EVar (Id "b"))) (EVar (Id "c"))))
+  
+   Output:
+  \ yx0 . a b c
+\end{lstlisting}
+\begin{lstlisting}
+  Input:
+  \ x . \ y . y (a b c)
+  
+  [Abstract Syntax]
+  
+  Prog (EApp (EAbs (Id "x") (EAbs (Id "y") (EVar (Id "y")))) (EApp (EApp (EVar (Id "a")) (EVar (Id "b"))) (EVar (Id "c"))))
+  
+   Output:
+  \ yy0 . yy0
+\end{lstlisting}
+
+Evaluate using pen-and-paper the following expressions:
+\begin{lstlisting}
+(\x.M) N
+N = argument
+M = function operation
+
+(\x.x) a = a
+\x.x a = \x.x a — cannot be reduced further because there are no parentheses
+(\x.\y.x) a b = (\x.(\y.x) a) b
+                   = (\x.x) a
+                   = a
+(\x.\y.y) a b = (\x.(\y.y) a) b
+                   = (\y.y) b
+                   = b
+(\x.\y.x) a b c = ((\x.(\y.x) a) b) c
+                      = ((\y.a) b) c
+                      = (\y.a) b c
+                      = a c
+(\x.\y.y) a b c = ((\x.(\y.y) a) b) c
+                      = ((\y.y) b) c
+                      = b c
+(\x.\y.x) a (b c) = ((\x.(\y.x)) a) (b c)
+                         = (\y.a) (b c)
+                         = a
+(\x.\y.y) a (b c) = ((\x.(\y.y)) a) (b c)
+                         = (\y.y) (b c)
+                         = b c
+(\x.\y.x) (a b) c = ((\x.(\y.x)) (a b)) c
+                         = (\y. a b) c
+                         = a b
+(\x.\y.y) (a b) c = ((\x.(\y.y)) (a b)) c
+                         = (\y.y) c
+                         = c
+(\x.\y.x) (a b c) = (\x.(\y.x)) (a b c)
+                         = (\y. a b c)
+(\x.\y.y) (a b c) = (\x.(\y.y)) (a b c)
+                         = (\y.y)
+\end{lstlisting}
+
+All of the hand writen notes can be found 
+\href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Oct%202%2C%202022.pdf}{Here}.
+
 
 \section{Project}
 
