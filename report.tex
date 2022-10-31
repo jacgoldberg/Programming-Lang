@@ -377,6 +377,20 @@ This week for homework we did lambda calc beta reduction on exponentiation. The 
 \\F(aa) = a;
 \\F(bb) = b;
 
+\subsection{Week 9}
+\\1) The deadlines for my project:
+\\a. The first deadline November 20th, I will have a writen guild on the rust language breaking down the language.
+\\b. The second deadline Novemeber 27th,  I will have a scripted server in rust to show the backend capabilities.
+\\c. The third deadline December 4th, I will have both a Rust server and a C server and compare and contrast the differences.
+\\2) The assignment
+\\This week for our assignment we were asked to evaluate the ARS found in "Homework 9" on canvas. We were tasked with finding the function which corsponds with the set off
+rules very similar to a puzzle. One of the first things I noticed is that there were only 3 normal forms: the empty string (""), a, and b. I also noticed there were not equivilance cases, such that
+a can be equal to b and so on. With that in mind I set a=1, b=2, and c=3 with the empty string equal to 0 (""=0). From this I could see that the only normal forms were 1 and 2. Given that I knew this ARS couldn't be 
+calculating something like addition, subtraction, or multiplication. I first attempted division. However there was not a case in which the answer could be zero with natural numbers. 
+I eventually landed on Mod being the most likely answer since given the normal forms it is a function that given the right donominator can yeild 0, 1, and 2 as the only answers. I then checked it against many examples of combinations of a, b, and c.
+I found that it was not consistant if the exact string was converted to a number but I did figure out that if you add the numbers together instead of directly translating them that you do end up getting only the remainers 0, 1, and 2 when you divide by 4.
+Therefor my answer to the puzzle is that this ARS is the ruleset for SUM of any combination (a,b,c) MOD 4.
+
 \section{Project}
 Introductory remarks ...
 Over the summer I had an internship and I primarily worked using rust. I didn't get to learn it very well but the little I did learn got me really interested in it. For my project I would like to do a deep dive into rust and look at the advantages it has over a similar language like C then show off a project with it.
