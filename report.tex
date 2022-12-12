@@ -406,6 +406,29 @@ The homework can be found \href{https://github.com/jacgoldberg/Programming-Lang/
 \\My response to Andriana:
 \\This is where I think it might speed up the process because once you have something that can be typed that has a strict set of rules the only thing that fallows is memorization which I think is a good trade off for the efficiency that one might acquire by picking up these skills.
 
+\subsection{Week 12}
+\\What is the invariant? Indicate the reasoning steps in which you apply the rules of Hoare Logic.
+\\while (x!=0) do z:=z*y;  x:= x-1 done
+\\We can write out our logic like:
+\\{x>=0}while (x!=0) do z:=z*y;  x:= x-1 done
+\\We can se the variables:
+\\x = 100
+\\y = 2
+\\z = 1
+\\We can also initialize a veriable t to 0 and use it to keep track of loop exuction.
+\\With that we get:
+\\t     x     y     z
+\\0     100   2     1
+\\1     99    2     2
+\\2     98    2     4
+\\...   ...   ...   ...
+\\99    1     2     2^99
+\\100   0     2     2^100
+\\t + x = 100 ->
+\\t = 100 - x
+\\z = y^t
+\\The invariant z = y^(100-x)
+
 
 \section{Project}
 Introductory remarks ...
