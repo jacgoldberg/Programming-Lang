@@ -180,8 +180,8 @@ you will always need to reduce to the highest block so the number is nonconsique
 \\ The equation I came up with is H(n) = (2^n-1)-1
 
 \subsection{Week 4}
-This week we worked with context free grammers and parse trees. Part one can be found \href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022.pdf}{here}, part 2 can be found 
-\href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022%20(2).pdf} {here}. 
+This week we worked with context free grammers and parse trees. Part one can be found \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022%20(1).pdf}{here}, part 2 can be found 
+\href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Dec%2019%2C%202022.pdf} {here}. 
 
 \subsection{Week 5}
 This week we are doing a lot of lambda calc stuff with abstract syntax trees.
@@ -358,6 +358,7 @@ M = function operation
 (\x.\y.y) (a b c) = (\x.(\y.y)) (a b c)
                          = (\y.y)
 \end{lstlisting}
+\\ASTs can be found \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Dec%2019%2C%202022%20(2).pdf}{here}
 
 \subsection{Week 6}
 
@@ -365,8 +366,8 @@ This week for homework we did lambda calc beta reduction on exponentiation. The 
 
 \subsection{Week 7}
 \\Line 5: e1 and e2 are being bound by the = and the scope is until line 7
-\\Line 6: i and e3 are being bound by the -> and the scope goes until line 6
-\\Line 7: e3 is being bound by -> and the scope is line 7
+\\Line 6: i and e3 are being bound by the (rightarrow) and the scope goes until line 6
+\\Line 7: e3 is being bound by (rightarrow) and the scope is line 7
 \\Line 8: x is bound by = and the scope is line 8
 \\Line 18: id s id1 e1 are all bound by = and the scope is to the end of line 22
 \\line 20: f is bound by = and the scope goes until the end of line 22
@@ -375,7 +376,7 @@ This week for homework we did lambda calc beta reduction on exponentiation. The 
 
 \subsection{Week 8}
 \\\textbf{Q1. Why does the ARS not terminate?}
-\\The ARS does not terminate because ba -> ab and ab -> ba do not stop reducing.
+\\The ARS does not terminate because ba \rightarrow ab and ab \rightarrow ba do not stop reducing.
 \\\textbf{Q2. What are the normal forms?} 
 \\The normal forms are: a,b,[] because they are unable to be reduced further.
 \\\textbf{Q3. Can you change the rules so that the new ARS has unique normal forms (but still has the same equivalence relation)}?
@@ -579,9 +580,7 @@ If I were to go back and do it again I would expand on my use cases and showcase
 
 \section{Conclusions}\label{conclusions}
 
-(approx 400 words)
-
-In the conclusion, I want a critical reflection on the content of the course. Step back from the technical details. How does the course fit into the wider world of programming languages and software engineering?
+I really loved how this course felt like a practical application of discrete math. I know we talked a little about haskel in discrete math but it was really cool getting to use it and write basic programs in it. Another thing I really enjoyed was stripping away all of the layers of abstraction and getting to the core about what is actually happening and physically seeing how division is more complicated than multiplication with all of the different recursive calls. Another thing I really enjoyed was drawing out all of the abstract syntax trees and seeing the different processes and states and talking about different forms of functional programs and how they took advantage of this. I think if there was anywhere in this course where I could be critical I think it would be with the content of the course after week 10 or so and also the final project. After around week 10 I felt like the lectures became a little unorganized and sporadic and didn’t follow as tight of focus like the lectures did in previous weeks. That made it hard for me to grasp the fundamentals of what we were learning at the time. For the final project I really wish that expectations were a bit more clear. It seemed very open ended which is great because it allows a lot of flexibility in the project but for me, since there wasn’t a rubric, I always was concerned that I was not doing enough or that my work wasn’t good enough quality. I think one way to improve this might be by posting some example projects so it might be a little easier to understand the scope.  To conclude I was really fascinated by this course. This course really forced me to think in ways that I am not used to and that was something I really enjoyed. It also got me accustomed to a lot of different languages and introduced me to lambda calculus which has already come up in different facets since learning about it. Thank you for your passion for this class and I wish I had the time to take compilers because I find all of this very fascinating.
 
 \begin{thebibliography}{99}
 \bibitem[PL]{PL} \href{https://github.com/alexhkurz/programming-languages-2022/blob/main/README.md}{Programming Languages 2022}, Chapman University, 2022.
