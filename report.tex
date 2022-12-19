@@ -374,22 +374,17 @@ This week for homework we did lambda calc beta reduction on exponentiation. The 
 \\The Rest of this weeks homework can be found \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Oct%2019%2C%202022.pdf}{here}.
 
 \subsection{Week 8}
-\\The ARS does not terminate because lines 3 and 4 are a loop.
-\\a is a normal form of aa and b is a normal form of bb
-\\No because by definition lines 3 and 4 are infinatly reducing into it's self so you would need to modifty the equivilance in order for the ars to achive normal forms. If you removed lines 3 or 4 the ARS would have normal forms.
-\\The normal forms provide termination, this is essentailly like a base case. The two functions would be:
-\\F(aa) = a;
-\\F(bb) = b;
-
+\\\textbf{Q1. Why does the ARS not terminate?}
+\\The ARS does not terminate because ba -> ab and ab -> ba do not stop reducing.
+\\\textbf{Q2. What are the normal forms?} 
+\\The normal forms are: a,b,[] because they are unable to be reduced further.
+\\\textbf{Q3. Can you change the rules so that the new ARS has unique normal forms (but still has the same equivalence relation)}?
+\\For this ARS to have unique normal forms the ARS would need to terminate. Termination is not possible right now with the given set of rules. You are also unable to change any while still maintaining the same equivalence. You would need to change either ab or ba to reduce to something unique or get rid of one of the two rules all together.
+\\\textbf{Q4. What do the normal forms mean? Describe the function implemented by the ARS?}
+\\The normal forms in this case represent something that is ireducable as it they are not able to be reduced further. This function takes a two character input, if both characters are the same it returns the character, if they are separate they return the characters in reverse order.
 \subsection{Week 9}
-\\1) The deadlines for my project:
-\\a. The first deadline November 20th, I will have a writen guild on the rust language breaking down the language.
-\\b. The second deadline Novemeber 27th,  I will have a scripted server in rust to show the backend capabilities.
-\\c. The third deadline December 4th, I will have both a Rust server and a C server and compare and contrast the differences.
-\\2) The assignment
 \\This week for our assignment we were asked to evaluate the ARS found in "Homework 9" on canvas. We were tasked with finding the function which corsponds with the set off
-rules very similar to a puzzle. One of the first things I noticed is that there were only 3 normal forms: the empty string (""), a, and b. I also noticed there were not equivilance cases, such that
-a can be equal to b and so on. With that in mind I set a=1, b=2, and c=3 with the empty string equal to 0 (""=0). From this I could see that the only normal forms were 1 and 2. Given that I knew this ARS couldn't be 
+rules very similar to a puzzle. One of the first things I noticed is that there were only 4 normal forms: the empty string (""), a, b, and c. With that in mind I set a=1, b=2, and c=3 with the empty string equal to 0 (""=0). Given that I knew this ARS couldn't be 
 calculating something like addition, subtraction, or multiplication. I first attempted division. However there was not a case in which the answer could be zero with natural numbers. 
 I eventually landed on Mod being the most likely answer since given the normal forms it is a function that given the right donominator can yeild 0, 1, and 2 as the only answers. I then checked it against many examples of combinations of a, b, and c.
 I found that it was not consistant if the exact string was converted to a number but I did figure out that if you add the numbers together instead of directly translating them that you do end up getting only the remainers 0, 1, and 2 when you divide by 4.
@@ -415,10 +410,10 @@ The homework can be found \href{https://github.com/jacgoldberg/Programming-Lang/
 \\while (x!=0) do z:=z*y;  x:= x-1 done
 \\We can write out our logic like:
 \\{x>=0}while (x!=0) do z:=z*y;  x:= x-1 done
-\\We can set the variables:
-\\x = 100
-\\y = 2
-\\z = 1
+\\Precondition:
+\\x = m
+\\y = x
+\\z = n
 \\We can also initialize a veriable t to 0 and use it to keep track of loop exuction.
 \\With that we get:
 \\t     x     y     z
@@ -431,7 +426,7 @@ The homework can be found \href{https://github.com/jacgoldberg/Programming-Lang/
 \\t + x = 100 ->
 \\t = 100 - x
 \\z = y^t
-\\The invariant z = y^(100-x)
+\\The invariant z = t * y^(m-x)
 
 
 \section{Project}
@@ -441,11 +436,144 @@ Rust has a lot of really interesting features making it feel like a modern versi
 show off the differences that sets rust apart from C and C++ in attempts to convince the reader that there are use cases where programming in rust is more valuable.
 
 \subsection{Specification}
-I decided for my project I am going to show off 3 main use cases for Rust and why you would want to use it instead of C. The first case will be 
-the memory protection. The second case will be the compile and run time of similar systems. I will also 
+I decided for my project I am going to show off two main use cases for Rust and why you would want to use it instead of C. The first case will be 
+the memory protection. The second case will be abstraction and readablility of Rust compared to C.
 \subsection{Prototype}
+\underline{ \textbf{Part 0:}} 
+\\A full breakdown of the differences between C and Rust can be found in this \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Final%20Project%20354.pdf}{report}.
+\\\underline{ \textbf{Part 1:}} 
+\\All of my code for the fallowing demonstrations will be linked and it located in the local repository.
+\\
+\\Memory management in programing is something very important since without it you will end up with low and inefficient programs.
+One example of a way memory is handled is with pointers and unsued memory. When programming in c their is no memory protection with unused memory on the heap.
+The way Rust handles it is by having a owner system to memory.
+
+\\I have included two files, \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/CMemoryTest/memorytest.c}{memorytest.c} and \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/RustMemoryTest/memorytest.rs}{memorytest.rs} 
+these files both show case a large difference between c and rust. In them I made the code as identitical as possible while still respecting their syntax.
+
+\\Idea summary: show how memory assignment differs in c and rust back to back.
+\\
+\\C Code:
+\begin{lstlisting}
+  #include <stdio.h>
+  struct Example{
+      int a_integer;
+      char a_string[3];
+  };
+  
+  int main (){
+    struct Example someData;
+    struct Example someOtherData;
+    
+    someData.a_integer = 1;
+    someData.a_string[0] = 'h';
+    someData.a_string[1] = 'i';
+  
+    someOtherData.a_integer = 2;
+    someOtherData.a_string[0] = 'B';
+    someOtherData.a_string[1] = 'y';
+    someOtherData.a_string[2] = 'e';
+  
+    someData = someOtherData;
+  
+    printf("%c %c %c", someData.a_string[0], someData.a_string[1], someData.a_string[2]);
+    printf("%i", someData.a_integer);
+  };
+  \end{lstlisting}
+\\C Code Output:
+\begin{lstlisting}
+  B y e2
+\end{lstlisting}
+\\What this means:
+\\This test case is showing that the you are able to freely reassign existing variables to point to different memory locations (in this example a struct).
+Since we are seeing that it returned the data from someOtherData the main question is what happened to the data held by someData? Well since it was not properly deleted that memory that someData was pointing to is left on the heap.
+This is a really big deal because if we implementing a system where we need to reallocate variables dyncamicly a security risk could be doing too many reassignments with no clean up.
+If that were to happen it could compromise the hard drive and cause all kinds of issues. The solution to this was to implement garbage collectors.
+\\
+\\What happens when we attempt to do the same operation in Rust?
+\\
+\\Rust Code:
+\begin{lstlisting}
+  struct Example{
+    a_integer: i32,
+    a_string: String, 
+}
+impl Example{
+    fn toString(&self) -> String{
+        format!("{} - {}", self.a_integer, self.a_string)
+    }
+    fn println(&self){
+        println!("{}",self.toString());
+    }
+}
+
+fn main(){
+
+    let mut someData = Example{
+        a_integer: 1,
+        a_string: String::from("hi"),
+    };
+    let someOtherData = Example{
+        a_integer: 2,
+        a_string: String::from("bye"),
+    }; 
+    someData.println();
+    someData = someOtherData;
+    someData.println();
+    someOtherData.println();
+}
+  \end{lstlisting}
+\\Rust Code Output:
+\begin{lstlisting}
+  error[E0382]: borrow of moved value: `someOtherData`
+   |
+20 |     let mut someOtherData = Example{
+   |         ----------------- move occurs because `someOtherData` has type `Example`, which does not implement the `Copy` trait
+...
+25 |     someData = someOtherData;
+   |                ------------- value moved here
+26 |     someData.println();
+27 |     someOtherData.println();
+   |     ^^^^^^^^^^^^^^^^^^^^^^^ value borrowed here after move
+\end{lstlisting}
+\\What this is showing:
+\\This is an example of Rust's ownership system. In Rust no two references are allowed to point to the same location of memory due to memory safety. Only one reference can point to one locationn in memory.
+Rust is implemented this way to avoid the problems defined by the C example. The downside is that you are not able to share memory locations dyncamicly however you are able to ensure that there are no loose
+chunks of memory on the heap. Due to this implementation Rust also does not require a garbage collection system since these errors are found at compile time.
+
+\\\underline{ \textbf{Part 2:}}
+\\
+\\In this part I have included two simple http servers. I did not write these servers and they are not origional code. Their github links can be found in the documentation section in addition to how to run and use them.
+\\
+\\\href{https://github.com/jacgoldberg/Programming-Lang/blob/main/samplerustserver/http_server.rs}{Rust Server}
+\\
+\\\href{https://github.com/jacgoldberg/Programming-Lang/tree/main/samplecserver}{C Server}
+\\
+\\What I want to highly about this use case is the readablility, abstraction, and length of the Rust server compared to the C server. Both of the servers when you run them give you a very similar output to your local host.
+The main difference however isn't with the end result but with the programs themselves. The rust server consists of less then 50 lines of code in total while still being very reable and manageable. The C server on the otherhand has an extensive code body across multiple files.
+In this specific case the rust server is a lot more practical for a use case due to it's abstraction. Rust is also able to have this level of abstraction without sacrificing any proformance.
+
 \subsection{Documentation}
+\\All Rust programs were compiled using rustc
+\\All C programs were compiled using gcc
+\\To run the rust files:
+\\rustc (name of file).rs
+\\./(name of file).exe
+\\To run the C files:
+\\gcc (name of file).c
+\\./a.out (for memory test)
+\\./server (for sample server)
+\\
+\\The source code for the rust server can be found \href{https://gist.github.com/mjohnsullivan/e5182707caf0a9dbdf2d}{here}.
+\\
+\\The source code for the C server can be found \href{https://gist.github.com/laobubu/d6d0e9beb934b60b2e552c2d03e1409e}{here}.
+
 \subsection{Critical Appraisal}
+The reason I decided on this project was because Rust was a language that really interested me that I didn't know a lot about. 
+I had heard it get compared to C and C++ very often as an alternative. I wanted to know what really differentiated it from its competitors since even though it is a mature language it is really young compared to C and C++.
+I thought that it related a lot to the class as well since we have been talking able and comparing different programs all semester. Especially something like memory management isn't something that we ecspiletly covered this semester but I think it's very relevant because even at a low level it effects the efficiency of a program significantly.
+One difficult thing I ran into while doing this project was finding any kind of code comparing the two languages with any type of benchmarking tests. I had to write all of the comparison code and be as possible to each language as I could.
+If I were to go back and do it again I would expand on my use cases and showcase something more practical, like how two different larger programs preform differently and why the memory protection in Rust is so important.
   
 \ldots
 
