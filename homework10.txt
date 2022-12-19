@@ -2,4 +2,4 @@ Let F be (lambda)f(lambda)n in n==0 then 1 else f(n-1) * n
 Ffix_F2 = if 2==0 then 1 else fix_F(2-1)*2
 fix_F(1)*2 = fix_F(0) * 2 * 1
 fix_F(0) * 2 * 1 = 1 * 2 * 1
-= 2
+= 2 

@@ -72,12 +72,17 @@ Hi there. My name is Jackson Goldberg. I am a senior here at chapman University 
 
 \subsection{Week 1}
 
-I have added my program into this github repo. It is a simple python program that loops infinatly until a and b are equal.
-I ran it with python 3 and manually input 9 and 33 yeilding the answer 3.
+\\Assignment: The aim of this homework is to familiarize yourself with LaTeX. Add your program (one is enough) to report.tex \
+and explain in detail how it executes on a sample input such as gcd(9,33)
+
+\\I have added my program into this github repo. It can be found \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Euclid.py}{here}.
+\\It is a simple python program that loops infinatly until subtracting the first and second values from their counterpart until they are equal.
+\\Once they are equal then the program prints the results and terminates. You can run in python and it will take in two numbers from the command line.
+\\I ran it with python 3 and manually input 9 and 33 yeilding the answer 3.
 
 \subsection{Week 2}
 This week we were tasked with creating simple recursive programs in huskall. These are my solutions for all of the assigned functions. These functions can also be found in a huskell
-file titled "Main.hs".
+file titled \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/Main.hs}{"Main.hs"}..
 \begin{lstlisting}
   -- Takes a list of char and returns a list of char. This works by assinging the element at odd positional values of a list into an empty list using the zip function which is what it returns.
   select_evens :: [[a]] -> [[a]]
@@ -164,13 +169,15 @@ I referenced \href{https://stackoverflow.com/questions/49741305/how-to-pick-elem
   3 > 2
   False
 \end{lstlisting}
+
 \subsection{Week 3}
 
 This week we were tasked with finishing the hanoi file supplied to us. The full file can be found 
-in Hanoi.txt.
+in \href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Hanoi.txt}{Hanoi.txt}.
 Hanoi is used 31 times in the file. 
 You can express this as formula because it doesn't matter the starting blocks since the process will always be the exact same.
 you will always need to reduce to the highest block so the number is nonconsiquental. There are many cool visuals of this online which show what is looks like using a graphical interpritation. There is a simple break down for however many N you have. 
+\\ The equation I came up with is H(n) = (2^n-1)-1
 
 \subsection{Week 4}
 This week we worked with context free grammers and parse trees. Part one can be found \href {https://github.com/jacgoldberg/Programming-Lang/blob/main/Note%20Sep%2025%2C%202022.pdf}{here}, part 2 can be found 
@@ -352,9 +359,6 @@ M = function operation
                          = (\y.y)
 \end{lstlisting}
 
-All of the hand writen notes can be found 
-\href{https://github.com/alexhkurz/programming-languages-2022/blob/main/README.md}{Here}.
-
 \subsection{Week 6}
 
 This week for homework we did lambda calc beta reduction on exponentiation. The file containing my solution can be founnd in week6.hs \href{https://github.com/jacgoldberg/Programming-Lang/blob/main/week6.hs}{Here} (Has .hs for sake of parentheses convienience).
@@ -411,7 +415,7 @@ The homework can be found \href{https://github.com/jacgoldberg/Programming-Lang/
 \\while (x!=0) do z:=z*y;  x:= x-1 done
 \\We can write out our logic like:
 \\{x>=0}while (x!=0) do z:=z*y;  x:= x-1 done
-\\We can se the variables:
+\\We can set the variables:
 \\x = 100
 \\y = 2
 \\z = 1
@@ -432,13 +436,17 @@ The homework can be found \href{https://github.com/jacgoldberg/Programming-Lang/
 
 \section{Project}
 Introductory remarks ...
-Over the summer I had an internship and I primarily worked using rust. I didn't get to learn it very well but the little I did learn got me really interested in it. For my project I would like to do a deep dive into rust and look at the advantages it has over a similar language like C then show off a project with it.
+Over the course of this last summer I got the opertunity to program in rust. I wasn't able to go really in depth but the functionality of the languge really caught my attention.
+Rust has a lot of really interesting features making it feel like a modern version of C or C++ to me. What I set out to do with my project was 
+show off the differences that sets rust apart from C and C++ in attempts to convince the reader that there are use cases where programming in rust is more valuable.
 
 \subsection{Specification}
+I decided for my project I am going to show off 3 main use cases for Rust and why you would want to use it instead of C. The first case will be 
+the memory protection. The second case will be the compile and run time of similar systems. I will also 
 \subsection{Prototype}
 \subsection{Documentation}
 \subsection{Critical Appraisal}
-
+  
 \ldots
 
 \section{Conclusions}\label{conclusions}
